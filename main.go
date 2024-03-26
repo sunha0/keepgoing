@@ -14,7 +14,7 @@ func main() {
 	// os.Setenv("CONF", "config.test.yaml")
 	// gin.SetMode(gin.TestMode)
 
-	global.VP = core.Viper()
+	global.VP = core.Viper() // 初始化Viper
 
 	/*
 		获取配置文件值

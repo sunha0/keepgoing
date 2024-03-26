@@ -15,7 +15,7 @@ import (
 
 // Viper //
 // 优先级: 命令行 > 环境变量 > 默认值
-// Author [SliverHorn](https://github.com/SliverHorn)
+
 func Viper(path ...string) *viper.Viper {
 	var conf string
 
@@ -24,7 +24,7 @@ func Viper(path ...string) *viper.Viper {
 		flag.Parse()
 
 		if conf == "" { // 判断命令行参数是否为空
-			if configEnv := os.Getenv(config.ConfigEnv); configEnv == "" { // 判断 internal.ConfigEnv 常量存储的环境变量是否为空
+			if configEnv := os.Getenv(config.ConfigEnv); configEnv == "" { // 判断 config.ConfigEnv 常量存储的环境变量是否为空
 
 				switch gin.Mode() {
 				case gin.DebugMode:
@@ -37,7 +37,7 @@ func Viper(path ...string) *viper.Viper {
 					conf = config.ConfigTestFile
 					fmt.Printf("您正在使用gin模式的%s环境名称,config的路径为%s\n", gin.Mode(), config.ConfigTestFile)
 				}
-			} else { // internal.ConfigEnv 常量存储的环境变量不为空 将值赋值于config
+			} else { // config.ConfigEnv 常量存储的环境变量不为空 将值赋值于config
 				conf = configEnv
 
 				fmt.Printf("您正在使用%s环境变量,config的路径为%s\n", config.ConfigEnv, conf)
@@ -65,6 +65,8 @@ func Viper(path ...string) *viper.Viper {
 			fmt.Println(err)
 		}
 	})
+
+	// 序列化到结构体
 	if err = v.Unmarshal(&global.Conf); err != nil {
 		panic(err)
 	}
