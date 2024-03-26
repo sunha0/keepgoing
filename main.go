@@ -4,8 +4,8 @@ import (
 	"fmt"
 	//"os"
 	//"github.com/gin-gonic/gin"
-	"github.com/go_demo/core"
-	"github.com/go_demo/global"
+	"github.com/keepgoing/core"
+	"github.com/keepgoing/global"
 )
 
 func main() {

@@ -1,7 +1,7 @@
 package global
 
 import (
-	"github.com/go_demo/config"
+	"github.com/keepgoing/config"
 	"github.com/spf13/viper"
 	"gorm.io/gorm"
 )

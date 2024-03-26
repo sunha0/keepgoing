@@ -9,8 +9,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 
-	"github.com/go_demo/config"
-	"github.com/go_demo/global"
+	"github.com/keepgoing/config"
+	"github.com/keepgoing/global"
 )
 
 // Viper //
