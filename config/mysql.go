@@ -11,12 +11,12 @@ type DsnProvider interface {
 // GeneralDB 也被 Pgsql 和 Mysql 原样使用
 type GeneralDB struct {
 	Prefix       string `mapstructure:"prefix" json:"prefix" yaml:"prefix"`
+	Ip           string `mapstructure:"ip" json:"ip" yaml:"ip"`
 	Port         string `mapstructure:"port" json:"port" yaml:"port"`
 	Config       string `mapstructure:"config" json:"config" yaml:"config"`       // 高级配置
 	Dbname       string `mapstructure:"db-name" json:"db-name" yaml:"db-name"`    // 数据库名
 	Username     string `mapstructure:"username" json:"username" yaml:"username"` // 数据库密码
 	Password     string `mapstructure:"password" json:"password" yaml:"password"` // 数据库密码
-	Path         string `mapstructure:"path" json:"path" yaml:"path"`
 	Engine       string `mapstructure:"engine" json:"engine" yaml:"engine" default:"InnoDB"`        //数据库引擎，默认InnoDB
 	LogMode      string `mapstructure:"log-mode" json:"log-mode" yaml:"log-mode"`                   // 是否开启Gorm全局日志
 	MaxIdleConns int    `mapstructure:"max-idle-conns" json:"max-idle-conns" yaml:"max-idle-conns"` // 空闲中的最大连接数
@@ -38,7 +38,7 @@ type Mysql struct {
 }
 
 func (m *Mysql) Dsn() string {
-	return m.Username + ":" + m.Password + "@tcp(" + m.Path + ":" + m.Port + ")/" + m.Dbname + "?" + m.Config
+	return m.Username + ":" + m.Password + "@tcp(" + m.Ip + ":" + m.Port + ")/" + m.Dbname + "?" + m.Config
 }
 
 func (m *Mysql) GetLogMode() string {

@@ -1,13 +1,14 @@
 package database
 
 import (
+	"os"
+
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/keepgoing/global"
 	"github.com/keepgoing/models/system"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
-	"os"
 )
 
 func GormMysql() *gorm.DB {
@@ -44,11 +45,11 @@ func RegisterTables() {
 	err := db.AutoMigrate(
 		&system.SysUser{},
 		&system.SysAuthority{},
-		&system.SysUserAuthority{},
+	// &system.SysUserAuthority{},
 
 	)
 	if err != nil {
-	// 	global.GVA_LOG.Error("register table failed", zap.Error(err))
+		// 	global.GVA_LOG.Error("register table failed", zap.Error(err))
 		os.Exit(0)
 	}
 	// global.GVA_LOG.Info("register table success")
