@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
+
 	//"os"
 	//"github.com/gin-gonic/gin"
 	"github.com/keepgoing/core"
+	"github.com/keepgoing/database"
 	"github.com/keepgoing/global"
-	"github.com/keepgoing/db"
 )
 
 func main() {
@@ -26,20 +26,13 @@ func main() {
 	*/
 
 	// 连接Mysql 数据库
-	global.DB = db.GormMysql()
-
+	global.DB = database.GormMysql()
 
 	if global.DB != nil {
-		db.RegisterTables() // 初始化表
+		database.RegisterTables() // 初始化表
 		// 程序结束前关闭数据库链接
 		db, _ := global.DB.DB()
 		defer db.Close()
 	}
-
-	fmt.Println(global.VP.GetString("jwt.signing-key"))
-	fmt.Println(global.VP.GetStringMap("email"))
-
-	fmt.Println(global.Conf.JWT.BufferTime)
-	fmt.Println(global.Conf.Mysql.GeneralDB.Prefix, global.Conf.Mysql.GeneralDB.Singular)
 
 }

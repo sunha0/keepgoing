@@ -66,7 +66,7 @@ func Viper(path ...string) *viper.Viper {
 		}
 	})
 
-	// 序列化到结构体
+	// 序列化到config配置结构体，可以通过结构体调用参数
 	if err = v.Unmarshal(&global.Conf); err != nil {
 		panic(err)
 	}
