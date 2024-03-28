@@ -44,8 +44,8 @@ func RegisterTables() {
 	db := global.DB
 	err := db.AutoMigrate(
 		&system.SysUser{},
-		&system.SysAuthority{},
-	// &system.SysUserAuthority{},
+		&system.SysRole{},
+		&system.SysUserRole{},
 
 	)
 	if err != nil {

@@ -35,6 +35,6 @@ func main() {
 		defer db.Close()
 	}
 
-	core.RunServer()
+	// core.RunServer()
 
 }
