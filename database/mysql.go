@@ -27,6 +27,7 @@ func GormMysql() *gorm.DB {
 			TablePrefix:   global.Conf.Mysql.Prefix,
 			SingularTable: global.Conf.Mysql.Singular,
 		},
+		DisableForeignKeyConstraintWhenMigrating: true,
 	}
 	if db, err := gorm.Open(mysql.New(mysqlConfig), gormConfig); err != nil {
 		return nil
@@ -43,10 +44,8 @@ func GormMysql() *gorm.DB {
 func RegisterTables() {
 	db := global.DB
 	err := db.AutoMigrate(
+		&system.SysAuthority{},
 		&system.SysUser{},
-		&system.SysRole{},
-		&system.SysUserRole{},
-
 	)
 	if err != nil {
 		// 	global.GVA_LOG.Error("register table failed", zap.Error(err))

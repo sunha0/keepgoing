@@ -77,7 +77,7 @@ captcha:
 # mysql connect configuration
 # 未初始化之前请勿手动修改数据库信息！！！如果一定要手动初始化请看（https://gin-vue-admin.com/docs/first_master）
 mysql:
-  ip: "172.30.193.164"
+  ip: "172.18.238.102"
   port: "3306"
   config: ""
   db-name: "keepgoing"
@@ -85,6 +85,8 @@ mysql:
   password: "123456"
   max-idle-conns: 10
   max-open-conns: 100
+  singular: false
+  prefix: ""
   log-mode: ""
   log-zap: false
 

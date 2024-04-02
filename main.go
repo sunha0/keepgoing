@@ -4,18 +4,19 @@ import (
 
 	//"os"
 	//"github.com/gin-gonic/gin"
+
 	"github.com/keepgoing/core"
 	"github.com/keepgoing/database"
 	"github.com/keepgoing/global"
 )
 
 func main() {
-	// 设置读取config文件
+	/* 设置读取config文件
+	   os.Setenv("CONF", "config.test.yaml")
+	   gin.SetMode(gin.TestMode)
+	*/
 
-	// os.Setenv("CONF", "config.test.yaml")
-	// gin.SetMode(gin.TestMode)
-
-	global.VP = core.Viper() // 初始化Viper
+	global.VP = core.Viper() // 初始化Viper 读取配置
 
 	/*
 		获取配置文件值
