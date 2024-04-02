@@ -1,12 +1,15 @@
 package core
 
 import (
+	"fmt"
 	"github.com/keepgoing/router"
+	"github.com/keepgoing/global"
 )
 
 func RunServer() {
 
-	router := router.Routers()
-	router.Run(":8080")
+	server := router.InitRouters()
 
+	addr := fmt.Sprintf(":%d",global.Conf.System.Addr)
+	server.Run(addr)
 }
