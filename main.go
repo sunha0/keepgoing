@@ -5,9 +5,11 @@ import (
 	//"os"
 	//"github.com/gin-gonic/gin"
 
+	"fmt"
+
 	"github.com/keepgoing/core"
-	"github.com/keepgoing/database"
 	"github.com/keepgoing/global"
+	"github.com/keepgoing/utils"
 )
 
 func main() {
@@ -27,15 +29,27 @@ func main() {
 	*/
 
 	// 连接Mysql 数据库
-	global.DB = database.GormMysql()
+	// global.DB = database.GormMysql()
 
-	if global.DB != nil {
-		database.RegisterTables() // 初始化表
-		// 程序结束前关闭数据库链接
-		db, _ := global.DB.DB()
-		defer db.Close()
-	}
+	// if global.DB != nil {
+	// 	database.RegisterTables() // 初始化表
+	// 	// 程序结束前关闭数据库链接
+	// 	db, _ := global.DB.DB()
+	// 	defer db.Close()
+	// }
 
-	core.RunServer()
+	// core.RunServer()
+
+	jwt := utils.NewJWT()
+
+	a := jwt.CreateClaims(utils.BaseClaims{
+		ID:          1,
+		Username:    "keepgoing",
+		NickName:    "keepgoing",
+		AuthorityId: 1,
+	})
+
+	b, _ := jwt.CreateToken(a)
+	fmt.Println(b)
 
 }

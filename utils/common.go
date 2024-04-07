@@ -1,6 +1,5 @@
 package utils
 
-
 import (
 	"strconv"
 	"strings"
@@ -9,7 +8,9 @@ import (
 
 func ParseDuration(d string) (time.Duration, error) {
 	d = strings.TrimSpace(d)
+
 	dr, err := time.ParseDuration(d)
+
 	if err == nil {
 		return dr, nil
 	}
