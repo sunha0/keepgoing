@@ -7,6 +7,7 @@ import (
 
 	"fmt"
 
+	"github.com/gofrs/uuid/v5"
 	"github.com/keepgoing/core"
 	"github.com/keepgoing/global"
 	"github.com/keepgoing/utils"
@@ -43,12 +44,14 @@ func main() {
 	jwt := utils.NewJWT()
 
 	a := jwt.CreateClaims(utils.BaseClaims{
+		UUID:        uuid.Must(uuid.NewV4()),
 		ID:          1,
 		Username:    "keepgoing",
 		NickName:    "keepgoing",
 		AuthorityId: 1,
 	})
 
+	fmt.Println(1111, a)
 	b, _ := jwt.CreateToken(a)
 	fmt.Println(b)
 
