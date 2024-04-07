@@ -5,12 +5,14 @@ import (
 	"github.com/spf13/viper"
 	"gorm.io/gorm"
 	"time"
+	"golang.org/x/sync/singleflight"
 )
 
 var (
 	DB   *gorm.DB
 	Conf config.Server
 	VP   *viper.Viper
+	Concurrency_Control= &singleflight.Group{}
 	
 )
 

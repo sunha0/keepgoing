@@ -13,3 +13,4 @@ func RunServer() {
 	addr := fmt.Sprintf(":%d",global.Conf.System.Addr)
 	server.Run(addr)
 }
+ 

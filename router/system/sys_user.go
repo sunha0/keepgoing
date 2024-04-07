@@ -11,4 +11,6 @@ func (s *UserRouter) InitUserRouter(Router *gin.RouterGroup) {
 
 	Router.GET("/test", system.Login)
 
+	Router.GET("/register", system.RegisterUser)
+
 }
